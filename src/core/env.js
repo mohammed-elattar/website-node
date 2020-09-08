@@ -3,7 +3,7 @@ import Is from "@flk/supportive-is";
 
 let rootDirectory = process.cwd();
 let fileContent = fs.get(rootDirectory + '/.env');
-let lines = fileContent.split('/\n|\r\n|\r/');
+let lines = fileContent.split(/\r\n|\r|\n/g);
 
 let data = {};
 for(let line of lines) {
@@ -19,8 +19,9 @@ for(let line of lines) {
         value = Number (value);
     }
 
-    data[key] = value;
     process.env[key] = value;
+
+    data[key] = value;
 }
 
 export default function env(key, defaultValue = null) {

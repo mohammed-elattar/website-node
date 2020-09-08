@@ -1,10 +1,18 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import env from './env';
+import ServiceProvidersContainer from '../core/service-prroviders-container';
 
 export default class Application {
     constructor() {
         this.prepareServer();
+        this.initialzeProviders()
+    }
+
+    initialzeProviders()
+    {
+        this.serviceProvidersContainer = new ServiceProvidersContainer;
+        this.serviceProvidersContainer.boot();
     }
 
     prepareServer()
