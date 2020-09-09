@@ -1,5 +1,5 @@
+import siteRoutes from './routes/site';
 export default class HomeServiceProvider {
-constructor() {
-    console.log('welcome');
+    routes = [siteRoutes];
 }
-}
+

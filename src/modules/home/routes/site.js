@@ -1,7 +1,6 @@
-import router from 'core/router';
-import { showHome, submitForm } from './../controllers/home-controller';
+import HomeController from "../controllers/home-controller";
+import router from 'core/Router';
 
 export default function () {
-    router.get('/', showHome)
-          .post('/submit', submitForm);
-};
+    router.get('/', [HomeController, 'homePage'])
+}

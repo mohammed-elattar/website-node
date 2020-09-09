@@ -1,13 +1,16 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import env from './env';
-import ServiceProvidersContainer from '../core/service-prroviders-container';
+import ServiceProvidersContainer from 'core/service-prroviders-container';
+import router from "./Router";
 
 export default class Application {
     constructor() {
         this.prepareServer();
         this.initialzeProviders()
+        router.setExpressApp(this.express);
     }
+
 
     initialzeProviders()
     {
@@ -25,9 +28,7 @@ export default class Application {
 
     run()
     {
-        this.express.get('/', function (request, response) {
-            response.send('mohammed Elattar');
-        })
+        this.serviceProvidersContainer.registerRoutes();
         this.express.listen(process.env.PORT, function () {
             console.log(`serving from port ${env('PORT')}`);
         })
