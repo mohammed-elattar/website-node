@@ -1,7 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import env from './env';
-import ServiceProvidersContainer from 'core/service-prroviders-container';
+import ServiceProvidersContainer from './service-prroviders-container';
 import router from "./Router";
 
 export default class Application {

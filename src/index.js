@@ -1,4 +1,4 @@
-import Application from "./core/application";
+import Application from "core/application";
 
 let app = new Application();
 app.run();

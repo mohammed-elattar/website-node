@@ -1,5 +1,7 @@
 import siteRoutes from './routes/site';
-export default class HomeServiceProvider {
+import ServiceProvider from "core/service-provider";
+
+export default class HomeServiceProvider extends ServiceProvider{
     routes = [siteRoutes];
 }
 
