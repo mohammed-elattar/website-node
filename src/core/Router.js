@@ -13,7 +13,7 @@ class Router {
 
             let output = controllerMethod();
             if (output) {
-                response.send(output);
+                return output;
             }
         });
 
