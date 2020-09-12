@@ -5,7 +5,10 @@ import ServiceProvidersContainer from './service-prroviders-container';
 import router from './Router';
 import fileUpload from 'express-fileupload';
 
-export default class Application {
+class Application {
+     request = null;
+     response = null;
+
     constructor() {
         this.prepareServer();
         this.initialzeProviders()
@@ -20,6 +23,12 @@ export default class Application {
 
     prepareServer() {
         this.express = new express();
+        this.express.use((request, response, next) => {
+            this.request = request;
+            this.response = response;
+
+            next();
+        });
         this.express.use(bodyParser.urlencoded({
             extended: true,
         }))
@@ -35,4 +44,16 @@ export default class Application {
             console.log(`serving from port ${env('PORT')}`);
         })
     }
+}
+
+
+let app = new Application();
+export default app;
+
+export function response() {
+    return app.response;
+}
+
+export function request() {
+    return app.request;
 }

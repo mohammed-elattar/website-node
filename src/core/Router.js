@@ -1,15 +1,17 @@
+import {response} from "./application";
+
 class Router {
 
     setExpressApp(expressApp) {
         this.expressApp = expressApp;
     }
 
-    _handleRequest(requestMthod, route, [controller, controllerAction]) {
-        this.expressApp[requestMthod](route, function (request, response) {
+    _handleRequest(requestMethod, route, [controller, controllerAction]) {
+        this.expressApp[requestMethod](route, function () {
             let controllerObject = new controller,
-                controllerMethod = controllerObject[controllerAction];
+                controllerMethod = controllerObject[controllerAction].bind(controllerObject);
 
-            let output = controllerMethod(request, response);
+            let output = controllerMethod();
             if (output) {
                 response.send(output);
             }
