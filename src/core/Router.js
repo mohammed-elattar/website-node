@@ -34,6 +34,16 @@ class Router {
     options(route, action) {
         return this._handleRequest('options', route, action);
     }
+
+    resource(resource, resourceHandler) {
+        const {list, create, show, update, remove} = resourceHandler;
+        return this._handleRequest('get', resource, list)
+            ._handleRequest('get', resource + '/:id', show)
+            ._handleRequest('put', resource + '/:id', update)
+            ._handleRequest('delete', resource + '/:id', remove)
+            ._handleRequest('post', resource, create);
+
+    }
 }
 
 export default new Router;
