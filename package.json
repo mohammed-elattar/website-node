@@ -6,7 +6,7 @@
     "build": "babel src --out-dir dist",
     "serve": "babel-watch src/index.js",
     "postinstall": "link-module-alias",
-    "video": "code . --disable-gpu && yarn serve"
+    "test": "npm run test"
   },
   "_moduleAliases": {
     "core": "src/core",
@@ -28,6 +28,6 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-fileupload": "^1.2.0",
-    "mongodb": "^3.5.8"
+    "mongodb": "^3.6.2"
   }
 }
