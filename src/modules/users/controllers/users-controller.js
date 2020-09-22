@@ -1,5 +1,7 @@
-function list(request, response) {
-    return response.send('Listing');
+import user from 'modules/users/models/user';
+
+async function list(request, response) {
+    return  response.send({records: await user.findAll()});
 }
 
 function show(request, response) {

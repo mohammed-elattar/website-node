@@ -5,8 +5,8 @@ class Router {
     }
 
     _handleRequest(requestMethod, route, callback) {
-        this.expressApp[requestMethod](route, function (request, response) {
-            let output = callback(request, response);
+        this.expressApp[requestMethod](route,async function (request, response) {
+            let output = await callback(request, response);
             if (output) {
                 return output;
             }

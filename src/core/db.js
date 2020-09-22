@@ -8,6 +8,8 @@ class database {
         this.client = connector.db(databaseName)
     }
 
+    get = this.findAll;
+
     findAll(collection, filter = {}, otherOptions = {}) {
         return new Promise((resolve, reject) => {
             this.client.collection(collection).find(filter, otherOptions).toArray((error, documents) => {
